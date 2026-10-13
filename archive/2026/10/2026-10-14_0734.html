@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국시장 모닝브리프 2026.10.14</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:#eef1f6;--white:#ffffff;--card:#ffffff;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --up:#059669;--up-bg:#d1fae5;--up-border:#6ee7b7;
+  --down:#dc2626;--down-bg:#fee2e2;--down-border:#fca5a5;
+  --blue:#2563eb;--blue-bg:#dbeafe;
+  --purple:#7c3aed;--purple-bg:#ede9fe;
+  --gold:#d97706;--gold-bg:#fef3c7;
+  --cyan:#0891b2;--cyan-bg:#cffafe;
+  --pink:#db2777;--pink-bg:#fce7f3;
+  --border:#d1d5db;--shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+html,body{height:100%;overflow:hidden;font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);}
+
+.update-badge{position:fixed;top:16px;right:20px;z-index:200;font-size:12px;color:#fbbf24;background:#1e3a8a;padding:5px 14px;border-radius:8px;font-weight:600;pointer-events:none;border:1px solid rgba(251,191,36,0.5);}
+
+.carousel{width:100%;height:100vh;}
+.slides-wrapper{display:flex;height:calc(100vh - 90px);transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.slide{min-width:100vw;height:100%;padding:28px 48px;overflow-y:auto;display:flex;flex-direction:column;}
+.slide-fill{flex:1;display:flex;flex-direction:column;}
+
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;height:90px;background:var(--white);border-top:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100;}
+.progress-bar{position:fixed;bottom:90px;left:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width 0.5s;z-index:101;}
+.slide-counter{font-size:15px;color:var(--text3);font-weight:600;min-width:70px;}
+.slide-counter span{color:var(--text);font-weight:800;font-size:20px;}
+.slide-dots{display:flex;gap:3px;flex:1;justify-content:center;flex-wrap:nowrap;max-width:1100px;overflow:hidden;}
+.dot-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:6px 4px;border-radius:6px;transition:all 0.2s;min-width:60px;}
+.dot-item:hover{background:var(--blue-bg);}
+.dot-bar{width:40px;height:4px;border-radius:2px;background:#d1d5db;transition:all 0.3s;margin-bottom:6px;}
+.dot-item.active .dot-bar{background:var(--blue);width:56px;}
+.dot-label{font-size:11px;color:var(--text3);font-weight:600;white-space:nowrap;}
+.dot-item.active .dot-label{color:var(--blue);font-weight:800;}
+.nav-buttons{display:flex;gap:8px;align-items:center;min-width:180px;justify-content:flex-end;}
+.nav-btn{width:44px;height:44px;border-radius:10px;border:2px solid var(--border);background:var(--white);color:var(--text);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-weight:700;}
+.nav-btn:hover{background:var(--blue-bg);border-color:var(--blue);}
+.auto-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:var(--white);color:var(--text2);font-size:13px;cursor:pointer;font-family:inherit;font-weight:600;}
+.auto-btn.on{background:var(--blue-bg);border-color:var(--blue);color:var(--blue);}
+
+.stag{font-size:20px;text-transform:uppercase;letter-spacing:3px;font-weight:800;padding:10px 22px;border-radius:8px;display:inline-block;margin-bottom:10px;}
+.stag.blue{background:var(--blue-bg);color:var(--blue);}
+.stag.green{background:var(--up-bg);color:var(--up);}
+.stag.red{background:var(--down-bg);color:var(--down);}
+.stag.purple{background:var(--purple-bg);color:var(--purple);}
+.stag.gold{background:var(--gold-bg);color:var(--gold);}
+.stag.cyan{background:var(--cyan-bg);color:var(--cyan);}
+.stag.pink{background:var(--pink-bg);color:var(--pink);}
+.stitle{font-size:44px;font-weight:900;margin-bottom:20px;line-height:1.2;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.up{color:var(--up);}.dn{color:var(--down);}.fw8{font-weight:800;}.flex1{flex:1;}
+
+/* Title slide */
+.title-slide{background:linear-gradient(135deg,#e0e7ff 0%,#f3e8ff 40%,#d1fae5 100%);padding:20px 48px 20px;gap:14px;overflow:hidden;}
+.title-row{display:grid;grid-template-columns:2.6fr 0.6fr;gap:16px;flex:1;min-height:0;overflow:hidden;}
+
+.hero-card{background:var(--white);border-radius:18px;box-shadow:0 6px 20px rgba(30,58,138,0.08);padding:16px 40px;display:flex;align-items:center;justify-content:center;gap:28px;border:1px solid rgba(255,255,255,0.8);text-align:center;flex-shrink:0;height:106px;}
+.hero-date-chip{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:8px 20px;border-radius:16px;font-size:20px;font-weight:700;flex-shrink:0;}
+.hero-title{font-size:52px;font-weight:900;letter-spacing:-2px;color:var(--text);line-height:1;}
+.hero-sub{font-size:22px;color:var(--text3);font-weight:500;flex-shrink:0;}
+
+.sum-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;flex:1;min-height:0;align-content:start;overflow-y:auto;}
+.sum-row{display:flex;flex-direction:column;gap:8px;padding:14px 18px;border-radius:14px;background:var(--white);border:1px solid var(--border);cursor:pointer;transition:all 0.15s;font-family:inherit;text-align:left;width:100%;}
+.sum-row:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(30,58,138,0.12);}
+.sum-tag{font-size:26px;font-weight:900;padding:8px 18px;border-radius:16px;white-space:nowrap;align-self:flex-start;}
+.sum-tag.gd{background:var(--gold-bg);color:var(--gold);}
+.sum-tag.up{background:var(--up-bg);color:var(--up);}
+.sum-tag.pu{background:var(--purple-bg);color:var(--purple);}
+.sum-tag.pk{background:var(--pink-bg);color:var(--pink);}
+.sum-tag.bl{background:var(--blue-bg);color:var(--blue);}
+.sum-tag.cy{background:var(--cyan-bg);color:var(--cyan);}
+.sum-tag.dn{background:var(--down-bg);color:var(--down);}
+.sum-desc{font-size:24px;color:var(--text);line-height:1.4;font-weight:700;word-break:keep-all;}
+
+.tcard{background:var(--white);border-radius:20px;box-shadow:0 8px 28px rgba(30,58,138,0.10);padding:22px 28px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.8);}
+.tcard.flex-main{flex:1;min-height:0;}
+.tcard-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:2px dashed var(--border);}
+.tcard-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.tcard-icon.picks{background:linear-gradient(135deg,#fef3c7,#fbbf24);}
+.tcard-icon.sector{background:linear-gradient(135deg,#dbeafe,#7c3aed);color:#fff;}
+.tcard-title{font-size:28px;font-weight:900;color:var(--text);}.tcard-title br{display:block;}
+.tcard-sub{font-size:15px;color:var(--text3);font-weight:600;margin-top:3px;}
+
+.picks-grid{display:flex;flex-direction:column;gap:7px;flex:1;}
+.pick-pill{background:linear-gradient(135deg,#ffffff,#f1f5f9);border:2px solid #bfdbfe;border-radius:10px;padding:8px 14px;box-shadow:0 2px 6px rgba(0,0,0,0.04);font-size:17px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:all 0.15s;text-align:center;}
+.pick-pill:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(30,58,138,0.15);}
+
+.opinion-box{border-left:6px solid var(--blue);padding:26px 30px;border-radius:14px;background:var(--white);font-size:20px;color:var(--text);line-height:1.85;font-weight:500;box-shadow:var(--shadow);}
+.opinion-box p{margin-bottom:10px;}.opinion-box p:last-child{margin-bottom:0;}
+.highlight{background:linear-gradient(180deg,transparent 60%,#fde68a 60%);font-weight:700;}
+.news-body b,.opinion-box b,.sector-analysis b{background:linear-gradient(180deg,transparent 60%,#fde68a 60%);font-weight:700;}
+
+.kwsum-row{display:flex;align-items:flex-start;gap:14px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:6px;}
+.kwsum-tag{font-size:13px;font-weight:800;padding:5px 12px;border-radius:16px;white-space:nowrap;flex-shrink:0;min-width:110px;text-align:center;}
+.kwsum-desc{font-size:17px;color:var(--text2);line-height:1.55;font-weight:500;flex:1;}
+
+/* Market indicators bar */
+.mkt-bar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.mkt-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 16px;flex:1;min-width:120px;text-align:center;box-shadow:var(--shadow);}
+.mkt-label{font-size:12px;color:var(--text3);font-weight:700;margin-bottom:4px;}
+.mkt-val{font-size:20px;font-weight:900;letter-spacing:-0.5px;}
+.mkt-chg{font-size:13px;font-weight:700;margin-top:2px;}
+.op-sections{display:flex;flex-direction:column;gap:12px;flex:1;}
+.op-block{background:var(--white);border-radius:14px;padding:14px 20px;box-shadow:var(--shadow);border-left:5px solid var(--blue);}
+.op-block.positive{border-left-color:var(--up);padding:12px 18px;}
+.op-block.risk{border-left-color:var(--down);padding:12px 18px;}
+.op-block.summary{border-left-color:var(--purple);background:linear-gradient(135deg,#faf5ff,#f5f3ff);}
+.op-block-title{font-size:22px;font-weight:900;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.op-block p{font-size:20px;color:var(--text);line-height:1.75;font-weight:500;margin-bottom:6px;}
+.op-block p:last-child{margin-bottom:0;}
+.op-sectors{display:flex;flex-wrap:wrap;gap:12px;}
+.op-sector-pill{padding:12px 24px;border-radius:20px;font-size:24px;font-weight:800;}
+
+.news-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:26px 30px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.news-headline{font-size:34px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:14px;}
+.news-url{font-size:13px;color:var(--blue);text-decoration:none;word-break:break-all;margin-bottom:14px;display:inline-block;font-weight:500;opacity:0.85;}
+.news-url:hover{text-decoration:underline;opacity:1;}
+.news-body{font-size:24px;color:var(--text2);line-height:1.8;font-weight:400;flex:1;margin-bottom:18px;}
+.news-body p{margin-bottom:10px;}.news-body p:last-child{margin-bottom:0;}
+.news-stocks{border-top:1px dashed var(--border);padding-top:12px;}
+.stocks-toggle{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:var(--pink-bg);color:var(--pink);padding:10px 22px;border-radius:20px;
+  font-size:17px;font-weight:800;border:2px solid var(--pink);transition:all 0.2s;
+  user-select:none;
+}
+.stocks-toggle:hover{background:var(--pink);color:#fff;}
+.stocks-toggle .arrow{transition:transform 0.3s;display:inline-block;}
+.stocks-toggle.open .arrow{transform:rotate(90deg);}
+.stocks-list{display:none;flex-wrap:wrap;gap:9px;margin-top:10px;}
+.stocks-list.show{display:flex;}
+.stock-pill{background:var(--pink-bg);color:var(--pink);padding:8px 18px;border-radius:18px;font-size:17px;font-weight:800;}
+.stock-pill.up,.stock-pill.dn,.stock-pill.gd,.stock-pill.pu,.stock-pill.cy,.stock-pill.pk{background:var(--pink-bg);color:var(--pink);}
+.news-single{padding:30px 36px;}
+
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.sec-count{font-size:14px;color:var(--text3);font-weight:700;padding:6px 14px;background:var(--bg);border-radius:20px;}
+</style>
+</head>
+<body>
+
+<div class="update-badge">업데이트: 2026-10-14 07:34</div>
+
+<div class="carousel">
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="slides-wrapper" id="slidesWrapper">
+
+
+<!-- S1: Title -->
+<div class="slide title-slide" data-label="타이틀">
+  <div class="hero-card">
+    <div class="hero-date-chip">&#128200; 2026.10.14 (수)</div>
+    <div class="hero-title">한국시장 모닝브리프</div>
+    <div class="hero-sub">Korea Market Morning Brief</div>
+  </div>
+  <div class="title-row">
+    <div class="tcard flex-main">
+      <div class="tcard-header">
+        <div class="tcard-icon sector">&#128204;</div>
+        <div>
+          <div class="tcard-title">핵심 키워드 및 이슈</div>
+          <div class="tcard-sub">섹터를 클릭하면 해당 페이지로 이동합니다</div>
+        </div>
+      </div>
+      <div class="sum-list">
+        <button class="sum-row" onclick="go(2)"><span class="sum-tag bl">반도체/기판</span><span class="sum-desc">문혁수 LG이노텍 대표 "FC-BGA 장기계약 추진 중"</span></button>
+        <button class="sum-row" onclick="go(3)"><span class="sum-tag bl">에너지/전력</span><span class="sum-desc">HD현대일렉트릭, 美 전력시장 입지 강화…AI 데이터센터 수주 확대</span></button>
+        <button class="sum-row" onclick="go(4)"><span class="sum-tag cy">자동차</span><span class="sum-desc">정의선, 모디와 8번째 회동…21兆 '인도 투자 승보수'</span></button>
+        <button class="sum-row" onclick="go(5)"><span class="sum-tag bl">2차전지</span><span class="sum-desc">에코프로비엠, 유상증자 발행가 8만9500원 확정…8861억원 조달</span></button>
+        <button class="sum-row" onclick="go(6)"><span class="sum-tag bl">2차전지</span><span class="sum-desc">LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…"K배터리, 실적 개선 본격화"</span></button>
+        <button class="sum-row" onclick="go(7)"><span class="sum-tag bl">화장품</span><span class="sum-desc">K뷰티, 3분기 계절성 깨고 사상 최대 수출 경신…'환율·용기 병목' 딛고 ODM·부자재 우위 시대 진입</span></button>
+        <button class="sum-row" onclick="go(8)"><span class="sum-tag bl">스페이스X</span><span class="sum-desc">[GAM] AST스페이스모바일 ② "스페이스X가 통신 3사를 AST 품으로 밀어낸다"</span></button>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-header">
+        <div class="tcard-icon picks">&#11088;</div>
+        <div>
+          <div class="tcard-title">오늘의 이슈<br>TOP PICKs</div>
+          <div class="tcard-sub">핵심 종목 10선</div>
+        </div>
+      </div>
+      <div class="picks-grid">
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A011070" target="_blank" style="color:inherit;text-decoration:none;">LG이노텍</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A007660" target="_blank" style="color:inherit;text-decoration:none;">이수페타시스</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A009150" target="_blank" style="color:inherit;text-decoration:none;">삼성전기</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A006400" target="_blank" style="color:inherit;text-decoration:none;">삼성SDI</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A247540" target="_blank" style="color:inherit;text-decoration:none;">에코프로비엠</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A003350" target="_blank" style="color:inherit;text-decoration:none;">한국화장품제조</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A251970" target="_blank" style="color:inherit;text-decoration:none;">펌텍코리아</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A267260" target="_blank" style="color:inherit;text-decoration:none;">HD현대일렉트릭</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A005380" target="_blank" style="color:inherit;text-decoration:none;">현대차</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A012330" target="_blank" style="color:inherit;text-decoration:none;">현대모비스</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- S2: Opinion (structured) -->
+<div class="slide" data-label="의견·키워드">
+  <div class="slide-fill">
+
+    <div class="op-sections">
+      <div class="op-block" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 22px;">
+        <div class="op-block-title" style="margin-bottom:0;font-size:22px;">&#128269; 오늘 주목할 섹터</div>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">반도체/기판</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">에너지/전력</span>
+          <span class="op-sector-pill" style="background:var(--cyan-bg);color:var(--cyan);">자동차</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">2차전지</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">화장품</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">스페이스X</span>
+      </div>
+      <div class="op-block">
+        <div class="op-block-title" style="font-size:22px;">&#128202; 마켓 포인트</div>
+        <p>■ <b>엔비디아</b>가 약 <span class="highlight">1%</span> 상승하며 <b>AI 인프라</b> 투자 수요가 여전히 살아있음을 재확인해 반도체·기판 섹터의 중장기 <b>모멘텀</b>에 긍정적 신호를 보냈음.</p>
+        <p>■ 반도체/기판 섹터는 LG이노텍 CEO가 FC-BGA 장기<b>계약</b> 추진을 공식화한 것이 핵심 이슈임.</p>
+        <p>■ AI 서버용 고성능 기판 수요 구조가 단기 사이클에서 장기 공급<b>계약</b> 중심으로 전환되는 국면임을 시사하며, 이수페타시스·삼성전기·심텍 등 패키징 기판 관련주에 직접 <b>수혜</b>가 예상됨.</p>
+        <p>■ <b>K뷰티</b> 섹터는 9월 수출액이 사상 처음으로 월 <b>12억</b> 달러를 <b>돌파</b>하며 전년 동기 대비 <span class="highlight">30%</span> 성장해 전통적인 '상고하저' 계절성을 완전히 깨뜨렸음.</p>
+        <p>■ 글로벌 오프라인 채널 확장이 성장을 이끌고 있으며 용기 공급 병목이 일부 해소 국면에 진입해 4분기 실적 가속 기대감이 높아졌음.</p>
+        <p>■ ODM 경쟁력과 부자재 공급 역량을 동시에 보유한 한국화장품제조·펌텍코리아 등에 <b>수혜</b>가 집중될 전망임.</p>
+        <p>■ 2차전지 섹터는 <b>LG에너지솔루션</b> 3분기 7560억원 흑자 달성에 이어 삼성SDI도 전년 동기 대비 흑자 전환이 유력해져 K<b>배터리</b> <b>실적 개선</b> 사이클이 본격화됐음.</p>
+        <p>■ 유럽 <b>전기차</b> 수요 회복과 북미 AI <b>데이터센터</b> ESS 수요 <b>급증</b>이 동시에 출하량을 끌어올리고 있어 양극재·소재 업체로 <b>수혜</b>가 확산될 전망임.</p>
+        <p>■ 전체적으로 단기 지수 방향보다는 중장기 구조적 성장 <b>모멘텀</b>이 살아있는 섹터에 대한 선별적 매수 전략이 유효한 장세임.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;">
+        <div class="op-block positive" style="flex:1;">
+          <div class="op-block-title" style="color:var(--up);font-size:22px;">&#9989; 긍정 포인트</div>
+        <p>■ <b>엔비디아</b>가 전일 약 <span class="highlight">1%</span> 상승하며 AI 칩 수요의 견조함을 재확인했고, LG이노텍의 FC-BGA 장기<b>계약</b> 공식화가 이수페타시스·삼성전기·심텍 등 <b>AI 인프라</b> 기판주에 직접 <b>수혜</b> <b>모멘텀</b>을 제공할 전망임.</p>
+        <p>■ <b>K뷰티</b> 9월 수출이 역대 최초 월 12억달러 <b>돌파</b>로 계절성을 초월한 구조적 성장을 공식 확인했으며, 브이티·한국화장품제조·펌텍코리아 등 ODM 및 부자재 업체의 4분기 실적 기대치 상향이 예상됨.</p>
+        <p>■ <b>LG에너지솔루션</b>·삼성SDI의 2개 분기 연속 흑자 흐름이 K<b>배터리</b> 저점 통과 내러티브를 강화하고 있으며, ESS 수요 <b>급증</b>이 에코프로비엠 등 양극재 업체의 중장기 수익성 개선을 뒷받침할 전망임.</p>
+        <p>■ <b>현대차</b>그룹이 모디 총리와의 8번째 회동에서 7년간 21조원 규모 인도 투자를 공식 발표해 <b>현대차</b>·<b>기아</b>·현대모비스의 신흥국 성장 스토리에 강력한 신뢰도가 부여됐음.</p>
+        </div>
+        <div class="op-block risk" style="flex:1;">
+          <div class="op-block-title" style="color:var(--down);font-size:22px;">&#9888;&#65039; 리스크 포인트</div>
+        <p>■ 국제유가가 전일 <span class="highlight">1%</span> 이상 <b>반등</b>해 중동 지정학 리스크 재부각 가능성이 높아졌으며, 에너지 비용 상승 압력이 <b>전기차</b>·화장품 등 제조 원가에 민감한 섹터의 마진 압박 요인으로 작용할 수 있음.</p>
+        <p>■ 에코프로비엠의 8861억원 규모 유상증자 발행가 확정은 단기 주당 가치 희석 부담으로 작용할 수 있으며, 2차전지 섹터 전반의 투자 심리를 일시적으로 위축시킬 오버행 리스크가 존재함.</p>
+        <p>■ HD현대일렉트릭의 증권사 목표주가가 122만원에서 94만원으로 약 <span class="highlight">23%</span> 대폭 하향 조정됐으며, 매수 의견이 유지됐음에도 <b>수주</b> 실현 속도에 대한 불확실성이 단기 주가 방어력 약화 요인으로 남아있음.</p>
+        </div>
+      </div>
+      <div class="op-block summary">
+        <div class="op-block-title" style="color:var(--purple);font-size:22px;">&#128172; 종합 의견</div>
+        <p>■ 오늘장은 <b>반도체/기판·에너지/전력·자동차·2차전지</b> 섹터에 집중할 필요가 있음.</p>
+        <p>■ 에너지 관련 변동성도 주시하며 <span class="highlight">섹터별 차별화된 접근</span>이 핵심임.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 반도체/기판 -->
+<div class="slide" data-label="반도체/기판">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 반도체/기판</div>
+        <div class="stitle">문혁수 LG이노텍 대표 "FC-BGA 장기계약 추진 중"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">문혁수 LG이노텍 대표 "FC-BGA 장기계약 추진 중"</div>
+      <a href="https://www.thebell.co.kr/free/content/ArticleView.asp?key=202610131407016720106533" target="_blank" class="news-url">thebell.co.kr</a>
+      <div class="news-body">
+          <p>■ 실시간뉴스 디지털·장기보험 역량 결합…교차판매 성과로 美 진출 자신감 '암웨이'…20년 독점<b>계약</b>에 지분투자까지 엠젠솔루션, 자회사 자금이전 '반복거래' 눈길 주거에 꽂힌 삼성증권, 사업성 중심 선별 투자 홈스인코리아, 직영 임대 넘어 중개 플랫폼 '승부수' 디지털·장기보험 역량 결합…교차판매 성과로 美 진출 자신감 '암웨이'…20년 독점<b>계약</b>에 지분투자까지</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A009150" target="_blank" class="stock-pill" style="text-decoration:none;">삼성전기</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A011070" target="_blank" class="stock-pill" style="text-decoration:none;">LG이노텍</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A007660" target="_blank" class="stock-pill" style="text-decoration:none;">이수페타시스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A222800" target="_blank" class="stock-pill" style="text-decoration:none;">심텍</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A077360" target="_blank" class="stock-pill" style="text-decoration:none;">덕산하이메탈</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A036710" target="_blank" class="stock-pill" style="text-decoration:none;">심텍홀딩스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A356860" target="_blank" class="stock-pill" style="text-decoration:none;">티엘비</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A007810" target="_blank" class="stock-pill" style="text-decoration:none;">코리아써키트</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 에너지/전력 -->
+<div class="slide" data-label="에너지/전력">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 에너지/전력</div>
+        <div class="stitle">HD현대일렉트릭, 美 전력시장 입지 강화…AI 데이터센터 수주 확대</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">HD현대일렉트릭, 美 전력시장 입지 강화…AI 데이터센터 수주 확대</div>
+      <a href="http://www.newsprime.co.kr/news/article.html?no=750678" target="_blank" class="news-url">newsprime.co.kr</a>
+      <div class="news-body">
+          <p>■ LS증권은 13일 HD현대일렉트릭(267260)에 대해 미국 송전 시장의 경쟁력을 바탕으로 인공지능(AI) <b>데이터센터</b> 관련 대형 <b>수주</b>가 확대되는 가운데 국내 3대 메가프로젝트에 따른 중장기 <b>수혜</b>도 기대된다며 투자의견 '매수(Buy)'를 유지했음.</p>
+          <p>■ 목표주가는 실적과 <b>수주</b>, 생산능력 확대 속도 등을 종합적으로 고려해 기존 122만원에서 94만원으로 하향했음.</p>
+          <p>■ HD현대일렉트릭은 전력기기 전문기업으로 초고압변압기와 차단기 등 송전·배전 설비를 생산함.</p>
+          <p>■ 최근에는 미국 전력망 투자와 AI <b>데이터센터</b> 건설 확대에 따른 전력기기 수요 증가가 주요 성장 동력으로 부각되고 있음.</p>
+          <p>■ 3분기 연결 기준 매출액은 1조1935억원, 영업이익은 3287억원으로 전년 동기 대비 각각 <span class="highlight">20%</span>, <span class="highlight">33%</span> 증가할 것으로 추정됨.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A267260" target="_blank" class="stock-pill" style="text-decoration:none;">HD현대일렉트릭</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A119850" target="_blank" class="stock-pill" style="text-decoration:none;">지엔씨에너지</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A479960" target="_blank" class="stock-pill" style="text-decoration:none;">위너스일렉</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A298040" target="_blank" class="stock-pill" style="text-decoration:none;">효성중공업</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A096690" target="_blank" class="stock-pill" style="text-decoration:none;">에이루트</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A001440" target="_blank" class="stock-pill" style="text-decoration:none;">대한전선</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A054220" target="_blank" class="stock-pill" style="text-decoration:none;">비츠로시스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A006260" target="_blank" class="stock-pill" style="text-decoration:none;">LS</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A006910" target="_blank" class="stock-pill" style="text-decoration:none;">보성파워텍</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A130660" target="_blank" class="stock-pill" style="text-decoration:none;">한전산업</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 자동차 -->
+<div class="slide" data-label="자동차·통상">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag cyan">&#128663; 자동차</div>
+        <div class="stitle">정의선, 모디와 8번째 회동…21兆 '인도 투자 승보수'</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">정의선, 모디와 8번째 회동…21兆 '인도 투자 승보수'</div>
+      <a href="https://www.fnnews.com/news/202610140143525415" target="_blank" class="news-url">fnnews.com</a>
+      <div class="news-body">
+          <p>■ 정의선 현대자동차그룹 회장이 인도 연 140만대 생산체제를 발판으로 현지 <b>투자 확대</b>에 승부수를 띄웠음.</p>
+          <p>■ 나렌드라 모디 총리와 여덟 번째로 마주 앉은 정 회장은 "<b>올해부터 7년간 약 155억달러(약 20조8000억원) 규모의 투자를 계획하고 있다</b>"며 중장기 청사진을 제시했음.</p>
+          <p>■ 신규 생산시설과 연구개발(R&D), 공급망 투자를 묶어 인도를 신흥국 수출의 핵심 기지로 키우겠다는 전략임.</p>
+          <p>■ 정 회장은 지난 13일(현지시간) 인도 뉴델리 총리 관저에서 모디 총리와 개별 면담을 갖고 중장기 투자 계획과 인도 모빌리티 산업 발전 방안을 논의했음.</p>
+          <p>■ 정 회장은 "<b>현대차그룹은 1996년 인도에 진출한 이후 지난 30년간 인도와 함께 성장해 왔다</b>"며 "푸네 공장 가동을 통해 연 140만대 생산체제를 확보했고, 안정적인 생산으로 인도 자동차 시장의 지속적인 성장에 적극 대응하며 신흥국 수출을 확대해 나가겠다"고 강조했음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A005380" target="_blank" class="stock-pill" style="text-decoration:none;">현대차</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A012330" target="_blank" class="stock-pill" style="text-decoration:none;">현대모비스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000270" target="_blank" class="stock-pill" style="text-decoration:none;">기아</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A204320" target="_blank" class="stock-pill" style="text-decoration:none;">HL만도</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A011210" target="_blank" class="stock-pill" style="text-decoration:none;">현대위아</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2차전지 -->
+<div class="slide" data-label="2차전지">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 2차전지</div>
+        <div class="stitle">에코프로비엠, 유상증자 발행가 8만9500원 확정…8861억원 조달</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">에코프로비엠, 유상증자 발행가 8만9500원 확정…8861억원 조달</div>
+      <a href="https://www.ccdailynews.com/news/articleView.html?idxno=2446019" target="_blank" class="news-url">ccdailynews.com</a>
+      <div class="news-body">
+          <p>■ 충북 청주에 본사를 둔 이차전지 양극재 기업 에코프로비엠이 약 8861억원 규모의 유상증자를 추진함.</p>
+          <p>■ 에코프로비엠은 주주배정 후 실권주 일반공모 방식으로 진행하는 유상증자의 최종 발행가액을 주당 8만9500원으로 확정했다고 13일 공시했음.</p>
+          <p>■ 최종 발행가액은 1차 발행가액인 8만9500원과 동일하며, 2차 발행가액 9만2500원보다 <b>3000원</b> 낮은 수준임.</p>
+          <p>■ 이번 유상증자로 발행되는 신주는 기명식 보통주 990만990주이며, 주당 액면가는 500원임.</p>
+          <p>■ 확정 발행가액을 기준으로 산정한 총 모집금액은 약 8861억원임.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A373220" target="_blank" class="stock-pill" style="text-decoration:none;">LG에너지솔루션</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A006400" target="_blank" class="stock-pill" style="text-decoration:none;">삼성SDI</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A247540" target="_blank" class="stock-pill" style="text-decoration:none;">에코프로비엠</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A096770" target="_blank" class="stock-pill" style="text-decoration:none;">SK이노베이션</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A066970" target="_blank" class="stock-pill" style="text-decoration:none;">엘앤에프</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A393890" target="_blank" class="stock-pill" style="text-decoration:none;">더블유씨피</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A360070" target="_blank" class="stock-pill" style="text-decoration:none;">탑머티리얼</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A037370" target="_blank" class="stock-pill" style="text-decoration:none;">EG</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A125210" target="_blank" class="stock-pill" style="text-decoration:none;">아모그린텍</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A054300" target="_blank" class="stock-pill" style="text-decoration:none;">팬스타엔터프라이즈</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2차전지 -->
+<div class="slide" data-label="2차전지">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 2차전지</div>
+        <div class="stitle">LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…"K배터리, 실적 개선 본격화"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…"K배터리, 실적 개선 본격화"</div>
+      <a href="https://www.newsis.com/view/NISX20261013_0003824449" target="_blank" class="news-url">newsis.com</a>
+      <div class="news-body">
+          <p>■ 삼성SDI, 3Q 영업익 1600억대 전망 LG엔솔 이어 삼성SDI도 흑자 유지 <b>전기차</b>·ESS 동반 성장에 <b>실적 개선</b> <b>LG에너지솔루션</b>이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망임.</p>
+          <p>■ 국내 주요 <b>배터리</b> 기업들이 안정적인 이익 실현을 지속하며 <b>실적 개선</b>을 본격화하고 있다는 분석임.</p>
+          <p>■ 14일 금융정보업체 에프앤가이드에 따르면 삼성SDI의 올해 3분기 영업이익 컨센서스(증권사 전망치 평균)는 1654억원으로 집계됐음.</p>
+          <p>■ 이는 지난해 3분기 5913억원의 영업손실에서 흑자 전환에 성공한다는 의미음.</p>
+          <p>■ 삼성SDI가 3분기에도 흑자를 내면 지난 2분기에 이어 2개 분기 연속 흑자를 유지할 수 있음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A373220" target="_blank" class="stock-pill" style="text-decoration:none;">LG에너지솔루션</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A006400" target="_blank" class="stock-pill" style="text-decoration:none;">삼성SDI</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A247540" target="_blank" class="stock-pill" style="text-decoration:none;">에코프로비엠</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A096770" target="_blank" class="stock-pill" style="text-decoration:none;">SK이노베이션</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A066970" target="_blank" class="stock-pill" style="text-decoration:none;">엘앤에프</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A393890" target="_blank" class="stock-pill" style="text-decoration:none;">더블유씨피</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A360070" target="_blank" class="stock-pill" style="text-decoration:none;">탑머티리얼</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A037370" target="_blank" class="stock-pill" style="text-decoration:none;">EG</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A125210" target="_blank" class="stock-pill" style="text-decoration:none;">아모그린텍</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A054300" target="_blank" class="stock-pill" style="text-decoration:none;">팬스타엔터프라이즈</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 화장품 -->
+<div class="slide" data-label="화장품">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 화장품</div>
+        <div class="stitle">K뷰티, 3분기 계절성 깨고 사상 최대 수출 경신…'환율·용기 병목' 딛고 ODM·부자재 우위 시대 진입</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">K뷰티, 3분기 계절성 깨고 사상 최대 수출 경신…'환율·용기 병목' 딛고 ODM·부자재 우위 시대 진입</div>
+      <a href="https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065564064023312" target="_blank" class="news-url">megaeconomy.co.kr</a>
+      <div class="news-body">
+          <p>■ <b>K뷰티</b> 산업이 전통적인 '상고하저' 계절성을 깨뜨리고 <b>사상 최대</b> 수출 실적을 갈아치우며 구조적 성장기에 진입했음.</p>
+          <p>■ 원화 <b>강세</b>에 따른 일시적 환율 하락과 전방위적인 용기 <b>공급 부족</b>이라는 <b>악재</b>를 뚫고 글로벌 오프라인 채널 확장에 힘입어 4분기 실적 확대 기대감을 높이고 있음.</p>
+          <p>■ 하나증권은 14일 발표한 화장품 산업 심층 분석 보고서(박종대 연구원, 양정석 연구원)를 통해 "<b>3분기 실적의 일시적 변동 요인은 환율 하락과 용기 부족이었으며, 이를 제외하면 주요 업체들의 펀더멘털은 시장 예상치를 웃돌고 있다</b>"고 진단했음.</p>
+          <p>■ ◇ 9월 사상 첫 <b>12억</b> 달러 <b>돌파</b>…유럽·중남미·중국 전방위 수출 질주 관세청 통계(HS코드 3304 기준)에 따르면 지난 9월 국내 화장품 수출액은 전년 동월 대비 <span class="highlight">30%</span> 증가한 <b>12억</b> <b>1300만</b> 달러를 기록했음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A002720" target="_blank" class="stock-pill" style="text-decoration:none;">국제약품</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A003350" target="_blank" class="stock-pill" style="text-decoration:none;">한국화장품제조</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A290650" target="_blank" class="stock-pill" style="text-decoration:none;">엘앤씨바이오</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A420570" target="_blank" class="stock-pill" style="text-decoration:none;">제이투케이바이오</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A0015N0" target="_blank" class="stock-pill" style="text-decoration:none;">아로마티카</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A018290" target="_blank" class="stock-pill" style="text-decoration:none;">브이티</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A078520" target="_blank" class="stock-pill" style="text-decoration:none;">에이블씨엔씨</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A092730" target="_blank" class="stock-pill" style="text-decoration:none;">네오팜</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A252500" target="_blank" class="stock-pill" style="text-decoration:none;">세화피앤씨</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A251970" target="_blank" class="stock-pill" style="text-decoration:none;">펌텍코리아</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 스페이스X -->
+<div class="slide" data-label="스페이스X">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 스페이스X</div>
+        <div class="stitle">[GAM] AST스페이스모바일 ② "스페이스X가 통신 3사를 AST 품으로 밀어낸다"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">[GAM] AST스페이스모바일 ② "스페이스X가 통신 3사를 AST 품으로 밀어낸다"</div>
+      <a href="https://www.newspim.com/news/view/20261014000010" target="_blank" class="news-url">newspim.com</a>
+      <div class="news-body">
+          <p>■ 이 기사는 10월 13일 오후 4시56분 '해외 주식 투자의 도우미' GAM(Global Asset Management)에 출고된 프리미엄 기사임.</p>
+          <p>■ GAM에서 회원 가입을 하면 9000여 해외 종목의 프리미엄 기사를 보실 수 있음.</p>
+          <p>■ <AST스페이스모바일 ① 스페이스X 주파수 공세에 월가 "<b>오히려 매수 기회</b>">에서 이어짐 ◆ 베렌버그 "<b>800MHz, 현 스타링크 <b>위성</b>과 호환 안 돼…상업화 생각보다 늦다</b>" 베렌버그의 마이클 필라토프 애널리스트도 주가 <b>급락</b> 당일인 9일 AST에 '매수' 의견과 목표주가 92달러를 재확인했음.</p>
+          <p>■ 필라토프는 "<b>스페이스X가 자체 네트워크를 구축하기로 한 결정은 오히려 AST의 전략적 가치를 높인다</b>"고 주장했음.</p>
+          <p>■ 스타링크가 이동통신 가입자를 두고 직접 경쟁할 채비를 갖추는 상황에서, 기존 통신사들은 고객 관계를 그대로 지키면서 <b>위성</b> 연결을 제공할 수 있는 AST의 <b>협력</b> 모델에 더 끌릴 수밖에 없다는 논리음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A027360" target="_blank" class="stock-pill" style="text-decoration:none;">아주IB투자</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A274090" target="_blank" class="stock-pill" style="text-decoration:none;">켄코아에어로스페이스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A100790" target="_blank" class="stock-pill" style="text-decoration:none;">미래에셋벤처투자</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A321370" target="_blank" class="stock-pill" style="text-decoration:none;">센서뷰</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A001430" target="_blank" class="stock-pill" style="text-decoration:none;">세아베스틸지주</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A295310" target="_blank" class="stock-pill" style="text-decoration:none;">에이치브이엠</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A209640" target="_blank" class="stock-pill" style="text-decoration:none;">와이제이링크</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A042700" target="_blank" class="stock-pill" style="text-decoration:none;">한미반도체</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A006800" target="_blank" class="stock-pill" style="text-decoration:none;">미래에셋증권</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A417010" target="_blank" class="stock-pill" style="text-decoration:none;">나노팀</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <div class="slide-counter"><span id="cur">1</span> / <span id="tot">9</span></div>
+    <div class="slide-dots" id="dots"></div>
+    <div class="nav-buttons">
+      <button class="auto-btn" id="autoBtn" onclick="toggleAuto()">&#9654; Auto 10s</button>
+      <button class="nav-btn" onclick="go(current-1)">&#9664;</button>
+      <button class="nav-btn" onclick="go(current+1)">&#9654;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let current=0,autoId=null;
+const w=document.getElementById('slidesWrapper'),
+      slides=w.children,
+      total=slides.length,
+      pb=document.getElementById('progressBar'),
+      dc=document.getElementById('dots');
+
+document.getElementById('tot').textContent=total;
+
+for(let i=0;i<total;i++){
+  const label=slides[i].getAttribute('data-label')||('S'+(i+1));
+  const d=document.createElement('div');
+  d.className='dot-item'+(i===0?' active':'');
+  d.innerHTML=`<div class="dot-bar"></div><div class="dot-label">${label}</div>`;
+  d.onclick=()=>go(i);
+  dc.appendChild(d);
+}
+
+function go(i){
+  if(i<0)i=total-1;if(i>=total)i=0;
+  current=i;
+  w.style.transform=`translateX(-${current*100}vw)`;
+  document.getElementById('cur').textContent=current+1;
+  pb.style.width=`${((current+1)/total)*100}%`;
+  document.querySelectorAll('.dot-item').forEach((d,j)=>d.classList.toggle('active',j===current));
+}
+
+function toggleAuto(){
+  const b=document.getElementById('autoBtn');
+  if(autoId){clearInterval(autoId);autoId=null;b.classList.remove('on');b.innerHTML='&#9654; Auto 10s';}
+  else{autoId=setInterval(()=>go(current+1),10000);b.classList.add('on');b.innerHTML='&#9724; Stop';}
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(current+1);}
+  if(e.key==='ArrowLeft'){e.preventDefault();go(current-1);}
+});
+
+go(0);
+</script>
+
+</body>
+</html>
