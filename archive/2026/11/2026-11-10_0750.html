@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국시장 모닝브리프 2026.11.10</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:#eef1f6;--white:#ffffff;--card:#ffffff;
+  --text:#111827;--text2:#374151;--text3:#6b7280;
+  --up:#059669;--up-bg:#d1fae5;--up-border:#6ee7b7;
+  --down:#dc2626;--down-bg:#fee2e2;--down-border:#fca5a5;
+  --blue:#2563eb;--blue-bg:#dbeafe;
+  --purple:#7c3aed;--purple-bg:#ede9fe;
+  --gold:#d97706;--gold-bg:#fef3c7;
+  --cyan:#0891b2;--cyan-bg:#cffafe;
+  --pink:#db2777;--pink-bg:#fce7f3;
+  --border:#d1d5db;--shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+html,body{height:100%;overflow:hidden;font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);}
+
+.update-badge{position:fixed;top:16px;right:20px;z-index:200;font-size:12px;color:#fbbf24;background:#1e3a8a;padding:5px 14px;border-radius:8px;font-weight:600;pointer-events:none;border:1px solid rgba(251,191,36,0.5);}
+
+.carousel{width:100%;height:100vh;}
+.slides-wrapper{display:flex;height:calc(100vh - 90px);transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.slide{min-width:100vw;height:100%;padding:28px 48px;overflow-y:auto;display:flex;flex-direction:column;}
+.slide-fill{flex:1;display:flex;flex-direction:column;}
+
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;height:90px;background:var(--white);border-top:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100;}
+.progress-bar{position:fixed;bottom:90px;left:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width 0.5s;z-index:101;}
+.slide-counter{font-size:15px;color:var(--text3);font-weight:600;min-width:70px;}
+.slide-counter span{color:var(--text);font-weight:800;font-size:20px;}
+.slide-dots{display:flex;gap:3px;flex:1;justify-content:center;flex-wrap:nowrap;max-width:1100px;overflow:hidden;}
+.dot-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:6px 4px;border-radius:6px;transition:all 0.2s;min-width:60px;}
+.dot-item:hover{background:var(--blue-bg);}
+.dot-bar{width:40px;height:4px;border-radius:2px;background:#d1d5db;transition:all 0.3s;margin-bottom:6px;}
+.dot-item.active .dot-bar{background:var(--blue);width:56px;}
+.dot-label{font-size:11px;color:var(--text3);font-weight:600;white-space:nowrap;}
+.dot-item.active .dot-label{color:var(--blue);font-weight:800;}
+.nav-buttons{display:flex;gap:8px;align-items:center;min-width:180px;justify-content:flex-end;}
+.nav-btn{width:44px;height:44px;border-radius:10px;border:2px solid var(--border);background:var(--white);color:var(--text);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-weight:700;}
+.nav-btn:hover{background:var(--blue-bg);border-color:var(--blue);}
+.auto-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--border);background:var(--white);color:var(--text2);font-size:13px;cursor:pointer;font-family:inherit;font-weight:600;}
+.auto-btn.on{background:var(--blue-bg);border-color:var(--blue);color:var(--blue);}
+
+.stag{font-size:20px;text-transform:uppercase;letter-spacing:3px;font-weight:800;padding:10px 22px;border-radius:8px;display:inline-block;margin-bottom:10px;}
+.stag.blue{background:var(--blue-bg);color:var(--blue);}
+.stag.green{background:var(--up-bg);color:var(--up);}
+.stag.red{background:var(--down-bg);color:var(--down);}
+.stag.purple{background:var(--purple-bg);color:var(--purple);}
+.stag.gold{background:var(--gold-bg);color:var(--gold);}
+.stag.cyan{background:var(--cyan-bg);color:var(--cyan);}
+.stag.pink{background:var(--pink-bg);color:var(--pink);}
+.stitle{font-size:44px;font-weight:900;margin-bottom:20px;line-height:1.2;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.up{color:var(--up);}.dn{color:var(--down);}.fw8{font-weight:800;}.flex1{flex:1;}
+
+/* Title slide */
+.title-slide{background:linear-gradient(135deg,#e0e7ff 0%,#f3e8ff 40%,#d1fae5 100%);padding:20px 48px 20px;gap:14px;overflow:hidden;}
+.title-row{display:grid;grid-template-columns:2.6fr 0.6fr;gap:16px;flex:1;min-height:0;overflow:hidden;}
+
+.hero-card{background:var(--white);border-radius:18px;box-shadow:0 6px 20px rgba(30,58,138,0.08);padding:16px 40px;display:flex;align-items:center;justify-content:center;gap:28px;border:1px solid rgba(255,255,255,0.8);text-align:center;flex-shrink:0;height:106px;}
+.hero-date-chip{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:8px 20px;border-radius:16px;font-size:20px;font-weight:700;flex-shrink:0;}
+.hero-title{font-size:52px;font-weight:900;letter-spacing:-2px;color:var(--text);line-height:1;}
+.hero-sub{font-size:22px;color:var(--text3);font-weight:500;flex-shrink:0;}
+
+.sum-list{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;flex:1;min-height:0;align-content:start;overflow-y:auto;}
+.sum-row{display:flex;flex-direction:column;gap:8px;padding:14px 18px;border-radius:14px;background:var(--white);border:1px solid var(--border);cursor:pointer;transition:all 0.15s;font-family:inherit;text-align:left;width:100%;}
+.sum-row:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(30,58,138,0.12);}
+.sum-tag{font-size:26px;font-weight:900;padding:8px 18px;border-radius:16px;white-space:nowrap;align-self:flex-start;}
+.sum-tag.gd{background:var(--gold-bg);color:var(--gold);}
+.sum-tag.up{background:var(--up-bg);color:var(--up);}
+.sum-tag.pu{background:var(--purple-bg);color:var(--purple);}
+.sum-tag.pk{background:var(--pink-bg);color:var(--pink);}
+.sum-tag.bl{background:var(--blue-bg);color:var(--blue);}
+.sum-tag.cy{background:var(--cyan-bg);color:var(--cyan);}
+.sum-tag.dn{background:var(--down-bg);color:var(--down);}
+.sum-desc{font-size:24px;color:var(--text);line-height:1.4;font-weight:700;word-break:keep-all;}
+
+.tcard{background:var(--white);border-radius:20px;box-shadow:0 8px 28px rgba(30,58,138,0.10);padding:22px 28px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.8);}
+.tcard.flex-main{flex:1;min-height:0;}
+.tcard-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:2px dashed var(--border);}
+.tcard-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.tcard-icon.picks{background:linear-gradient(135deg,#fef3c7,#fbbf24);}
+.tcard-icon.sector{background:linear-gradient(135deg,#dbeafe,#7c3aed);color:#fff;}
+.tcard-title{font-size:28px;font-weight:900;color:var(--text);}.tcard-title br{display:block;}
+.tcard-sub{font-size:15px;color:var(--text3);font-weight:600;margin-top:3px;}
+
+.picks-grid{display:flex;flex-direction:column;gap:7px;flex:1;}
+.pick-pill{background:linear-gradient(135deg,#ffffff,#f1f5f9);border:2px solid #bfdbfe;border-radius:10px;padding:8px 14px;box-shadow:0 2px 6px rgba(0,0,0,0.04);font-size:17px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:all 0.15s;text-align:center;}
+.pick-pill:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 12px rgba(30,58,138,0.15);}
+
+.opinion-box{border-left:6px solid var(--blue);padding:26px 30px;border-radius:14px;background:var(--white);font-size:20px;color:var(--text);line-height:1.85;font-weight:500;box-shadow:var(--shadow);}
+.opinion-box p{margin-bottom:10px;}.opinion-box p:last-child{margin-bottom:0;}
+.highlight{background:linear-gradient(180deg,transparent 60%,#fde68a 60%);font-weight:700;}
+.news-body b,.opinion-box b,.sector-analysis b{background:linear-gradient(180deg,transparent 60%,#fde68a 60%);font-weight:700;}
+
+.kwsum-row{display:flex;align-items:flex-start;gap:14px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:10px;margin-bottom:6px;}
+.kwsum-tag{font-size:13px;font-weight:800;padding:5px 12px;border-radius:16px;white-space:nowrap;flex-shrink:0;min-width:110px;text-align:center;}
+.kwsum-desc{font-size:17px;color:var(--text2);line-height:1.55;font-weight:500;flex:1;}
+
+/* Market indicators bar */
+.mkt-bar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.mkt-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 16px;flex:1;min-width:120px;text-align:center;box-shadow:var(--shadow);}
+.mkt-label{font-size:12px;color:var(--text3);font-weight:700;margin-bottom:4px;}
+.mkt-val{font-size:20px;font-weight:900;letter-spacing:-0.5px;}
+.mkt-chg{font-size:13px;font-weight:700;margin-top:2px;}
+.op-sections{display:flex;flex-direction:column;gap:12px;flex:1;}
+.op-block{background:var(--white);border-radius:14px;padding:14px 20px;box-shadow:var(--shadow);border-left:5px solid var(--blue);}
+.op-block.positive{border-left-color:var(--up);padding:12px 18px;}
+.op-block.risk{border-left-color:var(--down);padding:12px 18px;}
+.op-block.summary{border-left-color:var(--purple);background:linear-gradient(135deg,#faf5ff,#f5f3ff);}
+.op-block-title{font-size:22px;font-weight:900;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.op-block p{font-size:20px;color:var(--text);line-height:1.75;font-weight:500;margin-bottom:6px;}
+.op-block p:last-child{margin-bottom:0;}
+.op-sectors{display:flex;flex-wrap:wrap;gap:12px;}
+.op-sector-pill{padding:12px 24px;border-radius:20px;font-size:24px;font-weight:800;}
+
+.news-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:26px 30px;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.news-headline{font-size:34px;font-weight:800;color:var(--text);line-height:1.35;margin-bottom:14px;}
+.news-url{font-size:13px;color:var(--blue);text-decoration:none;word-break:break-all;margin-bottom:14px;display:inline-block;font-weight:500;opacity:0.85;}
+.news-url:hover{text-decoration:underline;opacity:1;}
+.news-body{font-size:24px;color:var(--text2);line-height:1.8;font-weight:400;flex:1;margin-bottom:18px;}
+.news-body p{margin-bottom:10px;}.news-body p:last-child{margin-bottom:0;}
+.news-stocks{border-top:1px dashed var(--border);padding-top:12px;}
+.stocks-toggle{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  background:var(--pink-bg);color:var(--pink);padding:10px 22px;border-radius:20px;
+  font-size:17px;font-weight:800;border:2px solid var(--pink);transition:all 0.2s;
+  user-select:none;
+}
+.stocks-toggle:hover{background:var(--pink);color:#fff;}
+.stocks-toggle .arrow{transition:transform 0.3s;display:inline-block;}
+.stocks-toggle.open .arrow{transform:rotate(90deg);}
+.stocks-list{display:none;flex-wrap:wrap;gap:9px;margin-top:10px;}
+.stocks-list.show{display:flex;}
+.stock-pill{background:var(--pink-bg);color:var(--pink);padding:8px 18px;border-radius:18px;font-size:17px;font-weight:800;}
+.stock-pill.up,.stock-pill.dn,.stock-pill.gd,.stock-pill.pu,.stock-pill.cy,.stock-pill.pk{background:var(--pink-bg);color:var(--pink);}
+.news-single{padding:30px 36px;}
+
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.sec-count{font-size:14px;color:var(--text3);font-weight:700;padding:6px 14px;background:var(--bg);border-radius:20px;}
+</style>
+</head>
+<body>
+
+<div class="update-badge">업데이트: 2026-11-10 07:50</div>
+
+<div class="carousel">
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="slides-wrapper" id="slidesWrapper">
+
+
+<!-- S1: Title -->
+<div class="slide title-slide" data-label="타이틀">
+  <div class="hero-card">
+    <div class="hero-date-chip">&#128200; 2026.11.10 (화)</div>
+    <div class="hero-title">한국시장 모닝브리프</div>
+    <div class="hero-sub">Korea Market Morning Brief</div>
+  </div>
+  <div class="title-row">
+    <div class="tcard flex-main">
+      <div class="tcard-header">
+        <div class="tcard-icon sector">&#128204;</div>
+        <div>
+          <div class="tcard-title">핵심 키워드 및 이슈</div>
+          <div class="tcard-sub">섹터를 클릭하면 해당 페이지로 이동합니다</div>
+        </div>
+      </div>
+      <div class="sum-list">
+        <button class="sum-row" onclick="go(2)"><span class="sum-tag up">반도체</span><span class="sum-desc">"두산, 전자사업 호실적에도…목표가 50%↓"-DB</span></button>
+        <button class="sum-row" onclick="go(3)"><span class="sum-tag up">반도체</span><span class="sum-desc">[속보] AMD 13% 폭등·마이크론 6% 상승…엔비디아만 4% 급락, 뉴욕증시 반도체주 희비</span></button>
+        <button class="sum-row" onclick="go(4)"><span class="sum-tag up">반도체</span><span class="sum-desc">젠슨 황 리스크에 'K-소부장' 촉각…"HBM 증설 지연시 자금 부담"</span></button>
+        <button class="sum-row" onclick="go(5)"><span class="sum-tag bl">에너지</span><span class="sum-desc">美 AIDC 건설 반대, 빅테크 "전력망 비용 부담"…韓 전력기기 기회</span></button>
+        <button class="sum-row" onclick="go(6)"><span class="sum-tag bl">에너지</span><span class="sum-desc">한화큐셀·OCI홀딩스, 美 태양광 관세 확정…현지 셀 생산이 수혜 가른다</span></button>
+        <button class="sum-row" onclick="go(7)"><span class="sum-tag bl">제약바이오</span><span class="sum-desc">파마리서치 무게중심, '내수 리쥬란' → '글로벌 리쥬란' 이동</span></button>
+        <button class="sum-row" onclick="go(8)"><span class="sum-tag bl">제약바이오</span><span class="sum-desc">영업이익 48% 급증…셀트리온제약, 3분기 '분기 최대 실적' 찍었다</span></button>
+        <button class="sum-row" onclick="go(9)"><span class="sum-tag bl">조선</span><span class="sum-desc">나흘 새 1.3조 잭팟… HD현대중공업, 연간 수주 달성 '초읽기'</span></button>
+        <button class="sum-row" onclick="go(10)"><span class="sum-tag dn">방산</span><span class="sum-desc">美서 보폭 넓히는 한화, K9 자주포 수출 이어 해군 상륙함까지 첫 건조 '쾌거'</span></button>
+        <button class="sum-row" onclick="go(11)"><span class="sum-tag bl">음식료</span><span class="sum-desc">NH證, "삼양식품, 없어서 못 파는 불닭볶음면⋯中 신공장 기대감↑"</span></button>
+        <button class="sum-row" onclick="go(12)"><span class="sum-tag bl">화장품</span><span class="sum-desc">아모레 '확장'·LG생건 '재편'·에이피알 '질주'…K뷰티 3사, 성장 공식도 달랐다</span></button>
+        <button class="sum-row" onclick="go(13)"><span class="sum-tag bl">비철금속</span><span class="sum-desc">현대차증권 "고려아연, 실적 부진 전망.. 목표가 9.2% 하향"</span></button>
+        <button class="sum-row" onclick="go(14)"><span class="sum-tag bl">가구/인테리어</span><span class="sum-desc">한샘, 3분기 영업이익 16억원…14분기 연속 흑자</span></button>
+        <button class="sum-row" onclick="go(15)"><span class="sum-tag pu">AI</span><span class="sum-desc">메타 뮤즈 모델 3종, 구글 클라우드서 프리뷰 제공</span></button>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-header">
+        <div class="tcard-icon picks">&#11088;</div>
+        <div>
+          <div class="tcard-title">오늘의 이슈<br>TOP PICKs</div>
+          <div class="tcard-sub">핵심 종목 10선</div>
+        </div>
+      </div>
+      <div class="picks-grid">
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A329180" target="_blank" style="color:inherit;text-decoration:none;">HD현대중공업</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A012450" target="_blank" style="color:inherit;text-decoration:none;">한화에어로스페이스</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A298040" target="_blank" style="color:inherit;text-decoration:none;">효성중공업</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A267260" target="_blank" style="color:inherit;text-decoration:none;">HD현대일렉트릭</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A010120" target="_blank" style="color:inherit;text-decoration:none;">LS ELECTRIC</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A003230" target="_blank" style="color:inherit;text-decoration:none;">삼양식품</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A278470" target="_blank" style="color:inherit;text-decoration:none;">에이피알</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A214450" target="_blank" style="color:inherit;text-decoration:none;">파마리서치</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A068760" target="_blank" style="color:inherit;text-decoration:none;">셀트리온제약</a></div>
+        <div class="pick-pill"><a href="https://www.tradingview.com/chart/?symbol=KRX%3A009540" target="_blank" style="color:inherit;text-decoration:none;">HD한국조선해양</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- S2: Opinion (structured) -->
+<div class="slide" data-label="의견·키워드">
+  <div class="slide-fill">
+
+    <div class="op-sections">
+      <div class="op-block" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 22px;">
+        <div class="op-block-title" style="margin-bottom:0;font-size:22px;">&#128269; 오늘 주목할 섹터</div>
+          <span class="op-sector-pill" style="background:var(--up-bg);color:var(--up);">반도체</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">에너지</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">제약바이오</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">조선</span>
+          <span class="op-sector-pill" style="background:var(--down-bg);color:var(--down);">방산</span>
+          <span class="op-sector-pill" style="background:var(--blue-bg);color:var(--blue);">음식료</span>
+      </div>
+      <div class="op-block">
+        <div class="op-block-title" style="font-size:22px;">&#128202; 마켓 포인트</div>
+        <p>■ 달러 <b>약세</b>와 유가 <b>급락</b>이 동시에 나타나며 비용 부담이 큰 한국 수출 제조업과 에너지 수입 의존 업종 모두에 복합적 <b>호재</b>가 형성된 국면임.</p>
+        <p>■ 첫 번째 주목 섹터는 조선·<b>방산</b>임.</p>
+        <p>■ HD현대중공업이 나흘 새 LNG선·초대형 암모니아 운반선 등 6척·1조3천억원 규모의 <b>계약</b>을 연속 체결하며 연간 <b>수주</b> 목표 달성을 목전에 뒀음.</p>
+        <p>■ 한화디펜스USA는 미국 해군 중형상륙함 건조 <b>계약</b>을 처음 따내며 K-<b>방산</b>의 미국 현지 <b>수주</b>가 육상에서 해상으로 확대됐음.</p>
+        <p>■ 미국의 대중 견제 기조가 이어지는 한 서태평양 군사 인프라 수요는 중장기적으로 지속될 전망임.</p>
+        <p>■ 두 번째 주목 섹터는 전력기기임.</p>
+        <p>■ 미국 10개 주 중간선거에서 주민투표 41건 중 40건이 <b>데이터센터</b> 건설 제한을 지지하자 빅테크가 송전망·변전소 확충 비용을 직접 부담하는 방향으로 전략을 선회했음.</p>
+        <p>■ 이미 미국 <b>데이터센터</b>·광역 송전망 대형 <b>계약</b>을 확보한 효성중공업, HD현대일렉트릭, LS ELECTRIC에 추가 발주 기회가 구조적으로 열리는 국면으로 해석됨.</p>
+        <p>■ 반(反)<b>데이터센터</b> 여론이 역설적으로 국내 전력기기 <b>수주</b>를 가속화하는 흐름이 전망됨.</p>
+        <p>■ 세 번째 주목 섹터는 음식료·화장품임.</p>
+        <p>■ 삼양식품은 불리한 환율 환경에서도 3분기 매출·영업이익 모두 시장 전망치를 웃도는 분기 최대 실적을 기록했으며, 중국 신공장 가동 본격화로 내년 추가 성장 여력이 충분히 남아 있는 것으로 평가됨.</p>
+        <p>■ 에이피알은 북미·유럽 고성장으로 <b>K뷰티</b> 3사 중 영업이익률 <span class="highlight">20.8%</span> 1위를 기록, 글로벌 성장주로서의 위상을 실적으로 확인시켰음.</p>
+        <p>■ 달러 <b>약세</b> 흐름이 지속될 경우 수출 비중 높은 소비재 기업의 외화 환산 실적에 추가 <b>모멘텀</b>이 형성될 전망임.</p>
+        <p>■ 전반적으로 미국 급<b>반등</b>·공포지수 <b>급락</b>·달러 <b>약세</b>가 겹쳐 기술적 <b>반등</b> 여건은 충분히 조성됐으나, <b>엔비디아</b> CEO 리스크가 한국 반도체 소부장 전반의 불확실성으로 번질 가능성이 남아 있어 조선·<b>방산</b>·전력기기 등 독자 <b>모멘텀</b> 보유 섹터 중심의 선별적 대응이 유효한 국면임.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;">
+        <div class="op-block positive" style="flex:1;">
+          <div class="op-block-title" style="color:var(--up);font-size:22px;">&#9989; 긍정 포인트</div>
+        <p>■ 미국 증시 VIX가 <span class="highlight">22%</span> 넘게 <b>급락</b>하며 위험선호 심리가 빠르게 복귀, 전일 <b>급락</b>한 시장의 기술적 <b>반등</b> 가능성이 높아졌음.</p>
+        <p>■ 유가 <b>급락</b>으로 항공·화학·조선 등 에너지 비용 부담이 큰 업종의 비용 구조 개선 효과가 기대됨.</p>
+        <p>■ 달러 <b>약세</b> 전환이 삼양식품·에이피알·파마리서치 등 수출 비중 높은 소비재 기업의 외화 환산 실적에 긍정적으로 작용할 전망임.</p>
+        <p>■ HD현대중공업·한화디펜스USA의 대형 <b>계약</b> 공시가 조선·<b>방산</b> 섹터의 실적 가시성을 높여 가치 재평가 기대감을 형성했음.</p>
+        </div>
+        <div class="op-block risk" style="flex:1;">
+          <div class="op-block-title" style="color:var(--down);font-size:22px;">&#9888;&#65039; 리스크 포인트</div>
+        <p>■ 젠슨 황 CEO의 불륜·외국 정보기관 연루 의혹으로 <b>엔비디아</b> 이사회가 독립 조사에 착수, <b>HBM</b> 증설 일정 불확실성이 <b>SK하이닉스</b>·<b>삼성전자</b> 등 국내 메모리 공급망 전반으로 번질 위험이 높아졌음.</p>
+        <p>■ AMD <span class="highlight">+13%</span> <b>급등</b>과 <b>엔비디아</b> <span class="highlight">-4.27%</span> <b>급락</b>의 반도체 내 극단적 양극화는 <b>엔비디아</b> 의존도 높은 국내 소부장 종목의 단기 변동성을 키울 전망임.</p>
+        <p>■ 미국 10년물 금리가 여전히 고수준을 유지하며 한샘 등 주택 경기 연동 내수 업종은 거래 위축과 비용 부담이 맞물려 의미 있는 <b>반등</b> <b>모멘텀</b> 형성이 어려울 전망임.</p>
+        </div>
+      </div>
+      <div class="op-block summary">
+        <div class="op-block-title" style="color:var(--purple);font-size:22px;">&#128172; 종합 의견</div>
+        <p>■ 오늘장은 <b>반도체·에너지·제약바이오·조선</b> 섹터에 집중할 필요가 있음.</p>
+        <p>■ 방산 관련 변동성도 주시하며 <span class="highlight">섹터별 차별화된 접근</span>이 핵심임.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 반도체 -->
+<div class="slide" data-label="메모리·반도체">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag green">&#128190; 반도체</div>
+        <div class="stitle">"두산, 전자사업 호실적에도…목표가 50%↓"-DB</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">"두산, 전자사업 호실적에도…목표가 50%↓"-DB</div>
+      <a href="https://www.hankyung.com/article/2026111062696" target="_blank" class="news-url">hankyung.com</a>
+      <div class="news-body">
+          <p>■ DB증권은 10일 두산 에 대해 "<b>전자사업부문(BG)의 구조적인 <b>공급 부족</b>과 높은 가동률, 우호적인 가격 환경에는 변화가 없다</b>"면서도 비교기업의 주가 하락을 반영해 목표주가를 기존 200만원에서 100만원으로 낮췄음.</p>
+          <p>■ 조현지 DB증권 연구원은 "<b>최근 인공지능(AI) 인프라 투자에 대한 수익성 우려가 대두되며 관련주 전반에 걸쳐 가파른 주가 조정이 나타났다</b>"고 설명했음.</p>
+          <p>■ 이어 "<b>전자BG 실적 추정치를 높였음에도 불구하고 비교기업의 멀티플(기업가치 평가 배수) 하락을 반영해 목표주가를 100만원으로 조정한다</b>"고 밝혔음.</p>
+          <p>■ 실적 자체는 호조를 이어갔음.</p>
+          <p>■ 3분기 전자BG 매출은 전년 동기보다 <span class="highlight">82.3%</span> 증가한 8020억원, 영업이익은 <span class="highlight">126.5%</span> 늘어난 2353억원임.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000660" target="_blank" class="stock-pill" style="text-decoration:none;">SK하이닉스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A005930" target="_blank" class="stock-pill" style="text-decoration:none;">삼성전자</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000150" target="_blank" class="stock-pill" style="text-decoration:none;">두산</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A064290" target="_blank" class="stock-pill" style="text-decoration:none;">인텍플러스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A089030" target="_blank" class="stock-pill" style="text-decoration:none;">테크윙</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A489790" target="_blank" class="stock-pill" style="text-decoration:none;">한화비전</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 반도체 -->
+<div class="slide" data-label="메모리·반도체">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag green">&#128190; 반도체</div>
+        <div class="stitle">[속보] AMD 13% 폭등·마이크론 6% 상승…엔비디아만 4% 급락, 뉴욕증시 반도체주 희비</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">[속보] AMD 13% 폭등·마이크론 6% 상승…엔비디아만 4% 급락, 뉴욕증시 반도체주 희비</div>
+      <a href="https://www.cbci.co.kr/news/articleView.html?idxno=625069" target="_blank" class="news-url">cbci.co.kr</a>
+      <div class="news-body">
+          <p>■ 삭제한 댓글은 다시 복구할 수 없음.</p>
+          <p>■ 그래도 삭제하시겠습니까? 계정을 선택하시면 로그인·계정인증 을 통해 댓글을 남기실 수 있음.</p>
+          <p>■ 회원 로그인 이름 비밀번호 자동등록방지 젠슨 황 <b>엔비디아</b> CEO, "<b>삶에도 상처</b>"…'향후 행보 촉각' [CBC뉴스] 젠슨 황 <b>엔비디아</b> 최고경영자(CEO)가 배우자에 대한 부정행위를 인정하고 가족과 회사 구성원, 주주들에게 사과했음.</p>
+          <p>■ 자신의 행동에 대한 책임을 전적으로 받아들이겠다는...</p>
+          <p>■ 2026-11-10 [개인정보 유출 신고] "<b>프롬프트·결제정보는 안전하다</b>" 앤트로픽 해명 속 정확한 피해 규모 조사 촉각 [CBC뉴스] 국내 기업이 사용 중인 미국 앤트로픽의 생성형 인공지능(AI) 서비스 '클로드' 계정 100여 개와 관련해 개인정보 유출이 신고된 것으로 확인됐음.</p>
+          <p>■ 개인정보보호위원회.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000660" target="_blank" class="stock-pill" style="text-decoration:none;">SK하이닉스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A005930" target="_blank" class="stock-pill" style="text-decoration:none;">삼성전자</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000150" target="_blank" class="stock-pill" style="text-decoration:none;">두산</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A064290" target="_blank" class="stock-pill" style="text-decoration:none;">인텍플러스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A089030" target="_blank" class="stock-pill" style="text-decoration:none;">테크윙</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A489790" target="_blank" class="stock-pill" style="text-decoration:none;">한화비전</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 반도체 -->
+<div class="slide" data-label="메모리·반도체">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag green">&#128190; 반도체</div>
+        <div class="stitle">젠슨 황 리스크에 'K-소부장' 촉각…"HBM 증설 지연시 자금 부담"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">젠슨 황 리스크에 'K-소부장' 촉각…"HBM 증설 지연시 자금 부담"</div>
+      <a href="https://www.news1.kr/industry/sb-founded/6348063" target="_blank" class="news-url">news1.kr</a>
+      <div class="news-body">
+          <p>■ 젠슨 황 <b>엔비디아</b> 최고경영자(CEO)가 중국 정보기관 연루 의혹을 받는 여성 기업인과의 불륜을 인정하면서 국내 반도체 소재·부품·장비(소부장) 공급망에 미칠 파장도 주목됨.</p>
+          <p>■ 사생활 논란이 미국의 대중국 수출 통제와 기술 안보 문제로 확대되면 인공지능(AI) 반도체 공급과 메모리 기업의 설비투자에도 영향을 줄 수 있어서음.</p>
+          <p>■ 업계에선 메모리 고객사의 증설 일정이 늦춰지거나 미국의 거래 검증이 강화되면 중소 <b>협력</b>사의 자금·비용 부담이 커질 수 있다는 지적도 나온음.</p>
+          <p>■ 10일 업계에 따르면 <b>엔비디아</b> 이사회는 8일(현지시간) 황 CEO가 외국 정보기관의 표적이 됐다는 보도와 관련해 독립 조사에 착수했음.</p>
+          <p>■ 사외이사로 구성한 위원회가 외부 법률고문의 지원을 받아 조사를 감독함.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000660" target="_blank" class="stock-pill" style="text-decoration:none;">SK하이닉스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A005930" target="_blank" class="stock-pill" style="text-decoration:none;">삼성전자</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000150" target="_blank" class="stock-pill" style="text-decoration:none;">두산</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A064290" target="_blank" class="stock-pill" style="text-decoration:none;">인텍플러스</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A089030" target="_blank" class="stock-pill" style="text-decoration:none;">테크윙</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A489790" target="_blank" class="stock-pill" style="text-decoration:none;">한화비전</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 에너지 -->
+<div class="slide" data-label="에너지">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 에너지</div>
+        <div class="stitle">美 AIDC 건설 반대, 빅테크 "전력망 비용 부담"…韓 전력기기 기회</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">美 AIDC 건설 반대, 빅테크 "전력망 비용 부담"…韓 전력기기 기회</div>
+      <a href="https://www.news1.kr/industry/general-industry/6348164" target="_blank" class="news-url">news1.kr</a>
+      <div class="news-body">
+          <p>■ 미국에서 인공지능(AI) <b>데이터센터</b> 건설을 제한하려는 움직임이 확산하자 AI 기업들이 전력망 구축 비용을 직접 부담하며 지역사회 설득에 나서고 있음.</p>
+          <p>■ <b>데이터센터</b>의 전력 사용이 주민들의 전기요금 부담을 키운다는 우려를 줄이고 대규모 <b>AI 인프라</b> 투자를 이어가기 위한 대응으로 풀이됨.</p>
+          <p>■ <b>데이터센터</b> 개발사들이 송전망과 변전소 확충 비용을 부담하면서 관련 설비 투자가 이어질 경우 미국 시장에 진출한 국내 전력기기 업체들에도 추가 <b>수주</b> 기회가 열릴 전망임.</p>
+          <p>■ 효성중공업과 HD현대일렉트릭, LS일렉트릭은 이미 미국 <b>데이터센터</b>와 광역 송전망 사업에서 대규모 공급<b>계약</b>을 확보한 상태음.</p>
+          <p>■ 10일 업계에 따르면 미국 선거정보 분석기관 밸럿피디아는 지난 3일 중간선거와 함께 10개 주에서 진행된 <b>데이터센터</b> 관련 주민투표 41건 가운데 40건에서 건설 제한을 지지하거나 개발 확대에 필요한 안건을 부결하는 결과가 나왔다고 집계했음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A298040" target="_blank" class="stock-pill" style="text-decoration:none;">효성중공업</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A267260" target="_blank" class="stock-pill" style="text-decoration:none;">HD현대일렉트릭</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A010120" target="_blank" class="stock-pill" style="text-decoration:none;">LS ELECTRIC</a>
+          <span class="stock-pill">한화큐셀</span>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A010060" target="_blank" class="stock-pill" style="text-decoration:none;">OCI홀딩스</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 에너지 -->
+<div class="slide" data-label="에너지">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 에너지</div>
+        <div class="stitle">한화큐셀·OCI홀딩스, 美 태양광 관세 확정…현지 셀 생산이 수혜 가른다</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">한화큐셀·OCI홀딩스, 美 태양광 관세 확정…현지 셀 생산이 수혜 가른다</div>
+      <a href="https://sateconomy.co.kr/news/view/1065555393443319" target="_blank" class="news-url">sateconomy.co.kr</a>
+      <div class="news-body">
+          <p>■ 토요경제 / - 띄어 쓰기를 포함하여 250자 이내로 써주세요.- 건전한 토론문화를 위해, 타인에게 불쾌감을 주는 욕설/비방/허위/명예훼손/도배 등의 댓글은 표시가 제한됨.</p>
+          <p>■ 한화큐셀·OCI홀딩스, 美 <b>태양광</b> 관세 확정…현지 셀 생산이 <b>수혜</b> 가른다 단독EU, PET 원료 세이프가드 조사 착수…한화임팩트·삼남석유화학 영향권 단독美, 현대제철 강관 반덤핑 <span class="highlight">4.20%</span> 확정…휴스틸은 <span class="highlight">0%</span> [단독] EU, 한국산 셀룰로스 수입등록 발효…롯데정밀화학 수출 변수 [단독] LS 에식스솔루션즈, 美서 중국 권선업체 수입금지 추진…ITC 조사 개시 [단독] <b>현대차</b>·<b>기아</b>, 英 유로7 신차 조기 의무화 철회…EU 인증도 인정 [단독] 동아지질, 中 TBM 수출통제에도 대응 자신…자체모델 중국산 부품 <span class="highlight">10%</span> 미만 코레일 김태승,</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A298040" target="_blank" class="stock-pill" style="text-decoration:none;">효성중공업</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A267260" target="_blank" class="stock-pill" style="text-decoration:none;">HD현대일렉트릭</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A010120" target="_blank" class="stock-pill" style="text-decoration:none;">LS ELECTRIC</a>
+          <span class="stock-pill">한화큐셀</span>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A010060" target="_blank" class="stock-pill" style="text-decoration:none;">OCI홀딩스</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 제약바이오 -->
+<div class="slide" data-label="제약바이오">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 제약바이오</div>
+        <div class="stitle">파마리서치 무게중심, '내수 리쥬란' → '글로벌 리쥬란' 이동</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">파마리서치 무게중심, '내수 리쥬란' → '글로벌 리쥬란' 이동</div>
+      <a href="https://www.hitnews.co.kr/news/articleView.html?idxno=80611" target="_blank" class="news-url">hitnews.co.kr</a>
+      <div class="news-body">
+          <p>■ 파마리서치의 성장 무게중심이 국내에서 해외로 빠르게 이동하고 있음.</p>
+          <p>■ 올해 1~3분기 매출 증가액 1034억원 가운데 <span class="highlight">74%</span>인 767억원이 수출에서 나왔음.</p>
+          <p>■ 국내 의료기기 사업의 성장세는 둔화했지만 해외 리쥬란과 화장품 사업이 새로운 성장동력으로 떠올랐음.</p>
+          <p>■ <히트뉴스>가 파마리서치의 1~3분기 IR 자료를 나란히 놓고 살펴보면 국내 비중에서 해외 비중으로 점차 매출이 넘어가는 과정이 명확히 보임.</p>
+          <p>■ 회사가 스킨부스터 '리쥬란' 중심의 내수 의료기기를 설명하는 말은 '견조한 내수 수요'에서 '의료관광 성수기 효과'를 거쳐 3분기에는 빠졌지만 미국 생산 거점 <b>인수</b>와 리쥬란 해외 인허가 확대처럼 다음을 위한 움직임은 이어졌음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A214450" target="_blank" class="stock-pill" style="text-decoration:none;">파마리서치</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A068760" target="_blank" class="stock-pill" style="text-decoration:none;">셀트리온제약</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 제약바이오 -->
+<div class="slide" data-label="제약바이오">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 제약바이오</div>
+        <div class="stitle">영업이익 48% 급증…셀트리온제약, 3분기 '분기 최대 실적' 찍었다</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">영업이익 48% 급증…셀트리온제약, 3분기 '분기 최대 실적' 찍었다</div>
+      <a href="http://www.newsroad.co.kr/news/articleView.html?idxno=67379" target="_blank" class="news-url">newsroad.co.kr</a>
+      <div class="news-body">
+          <p>■ [뉴스로드] =<b>셀트리온</b>제약이 올해 3분기 <b>사상 최대</b> 분기 실적을 올리며 성장세를 이어갔음.</p>
+          <p>■ <b>셀트리온</b>제약은 9일 공시를 통해 올해 3분기 연결 기준 영업이익이 239억원으로 집계됐다고 밝혔음.</p>
+          <p>■ 이는 지난해 같은 기간보다 <span class="highlight">48.4%</span> 증가한 수준으로, 분기 기준 최대치음.</p>
+          <p>■ 3분기 영업이익률은 <span class="highlight">14.8%</span>로 전년 동기 대비 <span class="highlight">3.1%</span>포인트 상승했음.</p>
+          <p>■ 같은 기간 매출은 1619억원으로, 전년 동기보다 <span class="highlight">17.2%</span> 늘었음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A214450" target="_blank" class="stock-pill" style="text-decoration:none;">파마리서치</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A068760" target="_blank" class="stock-pill" style="text-decoration:none;">셀트리온제약</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 조선 -->
+<div class="slide" data-label="조선">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 조선</div>
+        <div class="stitle">나흘 새 1.3조 잭팟… HD현대중공업, 연간 수주 달성 '초읽기'</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">나흘 새 1.3조 잭팟… HD현대중공업, 연간 수주 달성 '초읽기'</div>
+      <a href="https://www.iusm.co.kr/news/articleView.html?idxno=1070276" target="_blank" class="news-url">iusm.co.kr</a>
+      <div class="news-body">
+          <p>■ HD현대중공업이 초대형 암모니아 운반선에 이어 액화천연가스(LNG) 운반선 건조 <b>계약</b>을 따냈음.</p>
+          <p>■ 이달 6일과 9일 공시한 두 건의 <b>계약</b>은 선박 6척, 1조2,930억원 규모음.</p>
+          <p>■ HD현대중공업은 지난 6일 아프리카 소재 선사와 맺은 6,629억원 규모의 LNG 운반선 2척 건조 <b>계약</b>을 9일 공시했음.</p>
+          <p>■ 앞서 6일 공시한 초대형 암모니아 운반선 4척의 <b>계약</b>금액은 6,301억원으로, <b>계약</b> 기간은 2030년 5월 말까지음.</p>
+          <p>■ 10월에 공시한 초대형 가스운반선 4척과 HMM 컨테이너선 2척을 더하면 이들 네 건의 <b>계약</b>은 12척, 2조3,987억원 규모음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A329180" target="_blank" class="stock-pill" style="text-decoration:none;">HD현대중공업</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A009540" target="_blank" class="stock-pill" style="text-decoration:none;">HD한국조선해양</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 방산 -->
+<div class="slide" data-label="방산">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag red">&#128736;&#65039; 방산</div>
+        <div class="stitle">美서 보폭 넓히는 한화, K9 자주포 수출 이어 해군 상륙함까지 첫 건조 '쾌거'</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">美서 보폭 넓히는 한화, K9 자주포 수출 이어 해군 상륙함까지 첫 건조 '쾌거'</div>
+      <a href="https://www.todaykorea.co.kr/news/articleView.html?idxno=408373" target="_blank" class="news-url">todaykorea.co.kr</a>
+      <div class="news-body">
+          <p>■ 기자페이지 <b>구글</b>에 선호하 | 한화그룹이 조선과 <b>방산</b>, 에너지를 중심으로 사업 포트폴리오 확장에 나서고 있음.</p>
+          <p>■ 특히 업계에서는 미국 내 육·해상 <b>방산</b> 분야 <b>수주</b>가 본격적으로 확대된 것과 관련해 긍정적인 반응이 이어지고 있음.</p>
+          <p>■ 9일 투데이코리아 취재를 종합하면, 한화 미국 계열사 한화디펜스USA는 지난달 29일(현지시간) 미국 해군 선박건조관리업체(VCM)인 토트 서비스(TOTE Services)와 중형상륙함(LSM) 1척에 대한 건조 <b>계약</b>을 체결했음.</p>
+          <p>■ <b>계약</b>금액은 2억6900만달러(약 3575억원)로, 추가 3척을 건조할 수 있는 옵션도 포함된 것으로 알려졌음.</p>
+          <p>■ LSM은 해병대 병력과 장비, 보급품을 연안 지역에 수송 및 전개하는 데 사용하는 함정으로, 서태평양 지역에서 중국의 군사적 영향력 확대에 대응하기 위한 전략의 핵심적인 요소로 꼽히고 있음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A000880" target="_blank" class="stock-pill" style="text-decoration:none;">한화</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A042660" target="_blank" class="stock-pill" style="text-decoration:none;">한화오션</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A012450" target="_blank" class="stock-pill" style="text-decoration:none;">한화에어로스페이스</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 음식료 -->
+<div class="slide" data-label="음식료">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 음식료</div>
+        <div class="stitle">NH證, "삼양식품, 없어서 못 파는 불닭볶음면⋯中 신공장 기대감↑"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">NH證, "삼양식품, 없어서 못 파는 불닭볶음면⋯中 신공장 기대감↑"</div>
+      <a href="https://www.etoday.co.kr/news/view/2645530" target="_blank" class="news-url">etoday.co.kr</a>
+      <div class="news-body">
+          <p>■ NH투자증권은 삼양식품에 대해 투자의견 '매수'와 목표주가 188만원을 유지하며 음식료 업종 최선호주로 제시했음.</p>
+          <p>■ 9일 주영훈 NH투자증권 연구원은 삼양식품이 비우호적인 환율 환경에서도 분기 최대 매출을 경신한 가운데, 미국과 유럽 시장의 성장세에 힘입어 내년에도 <b>실적 개선</b> 흐름이 이어질 것으로 전망했음.</p>
+          <p>■ 삼양식품의 올해 3분기 연결 기준 매출액은 전년 동기 대비 <span class="highlight">25.3%</span> 증가한 7918억원, 영업이익은 <span class="highlight">49.9%</span> 늘어난 1962억원을 기록했음.</p>
+          <p>■ 매출액과 영업이익 모두 시장 전망치를 웃돌았음.</p>
+          <p>■ 영업이익에는 관세 환급 관련 일회성 이익 약 200억원이 반영됐음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A003230" target="_blank" class="stock-pill" style="text-decoration:none;">삼양식품</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 화장품 -->
+<div class="slide" data-label="화장품">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 화장품</div>
+        <div class="stitle">아모레 '확장'·LG생건 '재편'·에이피알 '질주'…K뷰티 3사, 성장 공식도 달랐다</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">아모레 '확장'·LG생건 '재편'·에이피알 '질주'…K뷰티 3사, 성장 공식도 달랐다</div>
+      <a href="https://www.peoplewatch.co.kr/article/view/ppw202611090017" target="_blank" class="news-url">peoplewatch.co.kr</a>
+      <div class="news-body">
+          <p>■ 국내 주요 화장품 기업인 아모레퍼시픽과 LG생활건강, 에이피알이 올해 3분기 서로 다른 성장 전략으로 엇갈린 성적표를 받았음.</p>
+          <p>■ 각 사 공시에 따르면 3분기 연결 기준 매출은 LG생활건강이 1조5774억원으로 가장 많았음.</p>
+          <p>■ 아모레퍼시픽은 1조1295억원, 에이피알은 7731억원으로 뒤를 이었음.</p>
+          <p>■ 에이피알이 1606억원으로 가장 많았고 아모레퍼시픽 1152억원, LG생활건강 704억원 순이었음.</p>
+          <p>■ 영업이익률 역시 에이피알이 <span class="highlight">20.8%</span>로 아모레퍼시픽(10.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A090430" target="_blank" class="stock-pill" style="text-decoration:none;">아모레퍼시픽</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A051900" target="_blank" class="stock-pill" style="text-decoration:none;">LG생활건강</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A278470" target="_blank" class="stock-pill" style="text-decoration:none;">에이피알</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 비철금속 -->
+<div class="slide" data-label="비철금속">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 비철금속</div>
+        <div class="stitle">현대차증권 "고려아연, 실적 부진 전망.. 목표가 9.2% 하향"</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">현대차증권 "고려아연, 실적 부진 전망.. 목표가 9.2% 하향"</div>
+      <a href="https://www.g-enews.com/view.php?ud=20261109084607480544093b5d4e_1" target="_blank" class="news-url">g-enews.com</a>
+      <div class="news-body">
+          <p>■ <b>현대차</b>증권은 9일 고려아연에 대해 귀금속 가격 <b>약세</b>와 원화 <b>강세</b>에 따른 실적 부진을 전망했음.</p>
+          <p>■ 이에 목표주가를 기존 142만원에서 129만원으로 <span class="highlight">9.2%</span> 하향 조정했음.</p>
+          <p>■ 고려아연의 올해 3분기 연결기준 매출액이 <b>6조</b> 861억원, 영업이익은 1417억원으로 집계됐음.</p>
+          <p>■ 영업이익은 전년 동기 대비 <span class="highlight">48%</span>, 전분기 대비 <span class="highlight">76%</span> 감소해 시장 기대치를 밑돌았음.</p>
+          <p>■ 고려아연의 4분기 영업이익을 2036억원으로 전망했음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A010130" target="_blank" class="stock-pill" style="text-decoration:none;">고려아연</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 가구/인테리어 -->
+<div class="slide" data-label="가구/인테리">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag blue">&#128196; 가구/인테리어</div>
+        <div class="stitle">한샘, 3분기 영업이익 16억원…14분기 연속 흑자</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">한샘, 3분기 영업이익 16억원…14분기 연속 흑자</div>
+      <a href="https://www.gokorea.kr/news/articleView.html?idxno=884798" target="_blank" class="news-url">gokorea.kr</a>
+      <div class="news-body">
+          <p>■ [공감신문] =한샘은 올해 3분기 연결 기준 잠정 매출액 3,576억원, 영업이익 16억원을 기록했다고 9일 공시했음.</p>
+          <p>■ 고금리와 대출 규제에 따른 주택 거래 위축, 원자재 가격 부담 등으로 매출과 수익성이 둔화했지만 14분기 연속 흑자 기조를 이어갔음.</p>
+          <p>■ 올해 3분기까지 누적 영업이익은 230억원으로 전년 동기 대비 약 <span class="highlight">48%</span> 증가했음.</p>
+          <p>■ 한샘은 주택 매매 거래 감소와 원부자재 가격 상승에 더해 9월 말 명절 연휴로 일부 소비 수요가 4분기로 이월됐다고 설명했음.</p>
+          <p>■ B2C 부문에서는 대표 프로모션인 '쌤페스타'와 학생방 기획전 등을 통해 매출 회복을 추진하고, B2B 부문에서는 한샘넥서스와의 <b>합병</b>을 바탕으로 특판 시장 공략을 확대함.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A009240" target="_blank" class="stock-pill" style="text-decoration:none;">한샘</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI -->
+<div class="slide" data-label="AI·빅테크">
+  <div class="slide-fill">
+    <div class="sec-header">
+      <div>
+        <div class="stag purple">&#129302; AI</div>
+        <div class="stitle">메타 뮤즈 모델 3종, 구글 클라우드서 프리뷰 제공</div>
+      </div>
+    </div>
+    <div class="news-card news-single flex1">
+      <div class="news-headline">메타 뮤즈 모델 3종, 구글 클라우드서 프리뷰 제공</div>
+      <a href="https://www.tokenpost.kr/news/ai/435469" target="_blank" class="news-url">tokenpost.kr</a>
+      <div class="news-body">
+          <p>■ 엠버와 원더가 기존 스파크 1.3에 합류해 관리형 API 목록에 올랐음.</p>
+          <p>■ 세 모델은 글로벌 엔드포인트에서 정식 <b>출시</b> 전 단계로 제공됨.</p>
+          <p>■ <b>메타</b>(Meta·$META)의 인공지능(AI) 모델 뮤즈 엠버(Muse Ember), 뮤즈 원더(Muse Wonder), 뮤즈 스파크 1.3(Muse Spark 1.3) 등 3종을<b>구글</b>클라우드(Google Cloud)가 제미나이 엔터프라이즈 에이전트 플랫폼(Gemini Enterprise Agent Platform)에서 프리뷰로 제공함.</p>
+          <p>■ 기존에 이용할 수 있던 스파크 1.3에 엠버와 원더가 추가됐음.</p>
+          <p>■ <b>구글</b> 클라우드는 9일 서비스 <b>출시</b> 기록에 세 모델을 글로벌 엔드포인트의 관리형 API로 제공한다고 적었음.</p>
+      </div>
+      <div class="news-stocks">
+        <span class="stocks-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show');">관련주 <span class="arrow">&#9654;</span></span>
+        <div class="stocks-list">
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A108860" target="_blank" class="stock-pill" style="text-decoration:none;">셀바스AI</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A035720" target="_blank" class="stock-pill" style="text-decoration:none;">카카오</a>
+          <a href="https://www.tradingview.com/chart/?symbol=KRX%3A018260" target="_blank" class="stock-pill" style="text-decoration:none;">삼성에스디에스</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <div class="slide-counter"><span id="cur">1</span> / <span id="tot">16</span></div>
+    <div class="slide-dots" id="dots"></div>
+    <div class="nav-buttons">
+      <button class="auto-btn" id="autoBtn" onclick="toggleAuto()">&#9654; Auto 10s</button>
+      <button class="nav-btn" onclick="go(current-1)">&#9664;</button>
+      <button class="nav-btn" onclick="go(current+1)">&#9654;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let current=0,autoId=null;
+const w=document.getElementById('slidesWrapper'),
+      slides=w.children,
+      total=slides.length,
+      pb=document.getElementById('progressBar'),
+      dc=document.getElementById('dots');
+
+document.getElementById('tot').textContent=total;
+
+for(let i=0;i<total;i++){
+  const label=slides[i].getAttribute('data-label')||('S'+(i+1));
+  const d=document.createElement('div');
+  d.className='dot-item'+(i===0?' active':'');
+  d.innerHTML=`<div class="dot-bar"></div><div class="dot-label">${label}</div>`;
+  d.onclick=()=>go(i);
+  dc.appendChild(d);
+}
+
+function go(i){
+  if(i<0)i=total-1;if(i>=total)i=0;
+  current=i;
+  w.style.transform=`translateX(-${current*100}vw)`;
+  document.getElementById('cur').textContent=current+1;
+  pb.style.width=`${((current+1)/total)*100}%`;
+  document.querySelectorAll('.dot-item').forEach((d,j)=>d.classList.toggle('active',j===current));
+}
+
+function toggleAuto(){
+  const b=document.getElementById('autoBtn');
+  if(autoId){clearInterval(autoId);autoId=null;b.classList.remove('on');b.innerHTML='&#9654; Auto 10s';}
+  else{autoId=setInterval(()=>go(current+1),10000);b.classList.add('on');b.innerHTML='&#9724; Stop';}
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(current+1);}
+  if(e.key==='ArrowLeft'){e.preventDefault();go(current-1);}
+});
+
+go(0);
+</script>
+
+</body>
+</html>
